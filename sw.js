@@ -1,4 +1,4 @@
-const CACHE='skilltrack-coach-demo-2026-11-02-v1';
+const CACHE='skilltrack-coach-demo-2026-11-02-v2';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./icon.svg','./manifest.webmanifest'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE&&k.startsWith('skilltrack-coach-demo-')).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

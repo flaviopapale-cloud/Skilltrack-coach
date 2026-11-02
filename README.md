@@ -1,43 +1,39 @@
-# SkillTrack Coach — Prototipo navigabile (v0.1)
+# SkillTrack Coach — Premium Studio v0.2
 
-Questa è una **demo locale con dati fittizi**, non un prodotto multiutente. Mostra il flusso coach → programmazione → atleta → allenamento → progressi → feedback.
+Nuova proposta grafica di SkillTrack Coach, basata sul prototipo v0.1. **Non è una piattaforma multiutente**: è una demo HTML/CSS/JS con dati fittizi salvati nel browser locale.
 
-## Cosa puoi provare
+## Design
 
-- Dashboard coach e profilo di ciascun atleta demo.
-- Editor flessibile con giornate configurabili e blocchi per serie, statiche, volume a tempo, superserie, combo, EMOM, power move, circuiti.
-- Tre strategie di programmazione: stessa scheda per tutto il ciclo; progressioni già definite W1–Wn; modifiche settimana per settimana.
-- Creazione di nuove schede da 1 a 7 giorni e 1 a 12 settimane (modificabili successivamente), duplicazione di programmi.
-- Parametri personalizzati per esercizio: nome/abbreviazione, unità, serie, target, propedeutica, loop, carico, recupero.
-- Assegnazione di una **copia individuale** del programma all’atleta (demo, stesso browser). Le modifiche alla copia non modificano il modello condiviso.
-- Vista atleta su telefono: risultati delle singole serie, note, RPE, salvataggio sessione.
-- Progressioni settimanali reali nel profilo atleta e nella vista Progressi, con percentuali solo su dati comparabili.
-- Feedback testuale del coach, CRM di esempio con scadenze e importi manuali, esportazione JSON della demo.
+- **Sidebar** grafite/nero notte `#181929`, con navigazione vettoriale coerente.
+- **Canvas** perla `#F4F5F9`, superfici bianche e bordi sottili.
+- **Accent** viola elettrico `#6254E8`, impiegato per pulsanti, selezioni e grafici.
+- **Hero** notte/indaco con geometrie sottili; KPI con migliore gerarchia tipografica.
+- Nuovo grafico reale di distribuzione delle sessioni registrate per atleta.
+- Restyling coerente di editor, atleti, progressi, feedback, amministrazione e vista atleta.
+- Responsive per desktop e iPhone. Non richiede librerie o font a pagamento.
 
-## Come aprirla
+## Come provarla
 
-**Computer:** apri `index.html` con un browser, oppure pubblica i file su GitHub Pages.
+1. Apri `index.html` da computer per una prova veloce, oppure carica **tutti i file nella radice di un nuovo repository GitHub Pages** per provarla da iPhone.
+2. Se hai già pubblicato il prototipo coach v0.1 e vuoi sostituirlo, effettua prima `Esporta dati demo`. Puoi poi sostituire `styles.css`, `app.js`, `index.html`, `sw.js`, `icon.svg` e `manifest.webmanifest` nel repo della demo coach. **Non sostituire mai i file del repository della tua app personale.**
+3. L'interfaccia è volutamente dimostrativa. Non inserire dati reali di clienti, filmati, informazioni su infortuni o pagamenti veri.
 
-**GitHub Pages:** crea un *nuovo* repository pubblico, ad esempio `SkillTrack-Coach-Demo` (non modificare il repository dell'app personale `SkillTrack`), carica il contenuto di questa cartella nella radice del repository, attiva *Settings → Pages → Deploy from a branch → main → /(root)*. L'indirizzo sarà `https://<username>.github.io/SkillTrack-Coach-Demo/`.
+Le modifiche estetiche conservano la chiave `localStorage` della v0.1 (`skilltrack-coach-demo-v1`) per non cancellare i dati della demo. **Questo non è ancora un sistema di backup affidabile.**
 
-**iPhone:** apri l'URL con Safari e usa *Condividi → Aggiungi alla schermata Home*.
+## Flusso testato in browser
 
-## Limiti e dati
+- Dashboard e grafico per atleta;
+- Libreria programmi ed editor;
+- Passaggio a vista atleta;
+- Registrazione serie e completamento sessione;
+- Ritorno al profilo atleta nel coach.
 
-- Tutti gli atleti sono fittizi (Atleta A, B, C, D).
-- I dati modificati sono salvati nel `localStorage` del browser **su quel dispositivo**.
-- La vista coach e quella atleta condividono i dati perché sono nello **stesso browser**, non perché esista un vero account o backend.
-- Nessuna autenticazione, isolamento tra coach, sincronizzazione multi-dispositivo, storage privato per video, pagamento, AI o conformità operativa GDPR.
-- **Non inserire informazioni reali dei clienti, dati sanitari o video personali nella demo pubblicata su GitHub Pages.**
-- Il JSON scaricato dal pulsante "Esporta dati demo" serve a ispezionare il modello; non è disponibile un comando di importazione in questa demo.
+## Stato delle funzionalità
 
-## Struttura
+**Funzionanti nella sola demo locale:** dashboard; gestione atleti fittizi; editor blocchi, esercizi e target; 3 modalità di programmazione; copia individuale di schede; risultati inseriti dall'atleta nello stesso browser; confronti settimanali di base; feedback testuali; scadenze e importi manuali; export JSON demo.
 
-- `index.html` — shell del sito
-- `styles.css` — interfaccia responsive
-- `app.js` — logica del prototipo e dati demo
-- `manifest.webmanifest`, `icon.svg`, `sw.js` — installazione PWA e cache della versione demo
+**Solo parziali:** struttura di allenamento differente tra settimane (modifica target, non ancora blocchi differenti per W2/W3); logica specifica per combo/superserie/EMOM; controllo rigoroso comparabilità; editor mobile a livello premium; gestione dei mesocicli e pause; gestione dei feedback e CRM reale.
 
-## Architettura futura (da implementare, non presente nella demo)
+**Non presenti:** login e ruoli veri; database multiutente; sincronizzazione coach-atleta; storage privato, video, annotazioni su frame; offline con coda sync; notifiche; importazione Excel/Canva/PDF; AI; calendario programmazione e check-in; abbonamenti, incassi e fatturazione; GDPR/compliance e gestione professionale dei dati.
 
-PWA/React + autenticazione + PostgreSQL/Supabase con isolamento organizzazioni (RLS), schede versionate, sincronizzazione offline, storage privato per video, automazioni, AI Copilot e, solo in seguito, pagamenti. In questa fase non è necessario collegare servizi esterni.
+Prossima tappa consigliata: sviluppare editor settimanale completo + versioni immutabili delle schede + prototipo di analisi feedback coach prima di integrare backend e pagamenti.
